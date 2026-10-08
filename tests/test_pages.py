@@ -32,6 +32,19 @@ APP_PAGES = {
             "Plain-language verdicts",
         ],
     },
+    "reelo": {
+        "h1": "Reminders that restart when you do.",
+        "features": [
+            "Counts from completion",
+            "Flexible scheduling",
+            "Follow-up nudges",
+            "Stay organized",
+            "Pause anytime",
+            "Calendar view",
+            "Widgets",
+            "iCloud sync",
+        ],
+    },
 }
 
 
@@ -167,6 +180,10 @@ class AppPageMixin:
 
 class ChronolyzePageTest(AppPageMixin, unittest.TestCase):
     app = "chronolyze"
+
+
+class ReeloPageTest(AppPageMixin, unittest.TestCase):
+    app = "reelo"
 
 
 class NotFoundPageTest(unittest.TestCase):
