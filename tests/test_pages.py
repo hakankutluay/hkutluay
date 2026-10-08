@@ -6,6 +6,7 @@ from PIL import Image
 
 from tests.sitelib import (
     ALLOWED_LINK_HOSTS,
+    APPS,
     ORIGIN,
     SITE,
     all_pages,
@@ -16,6 +17,22 @@ from tests.sitelib import (
 )
 
 THEMES = {"theme-home", "theme-chronolyze", "theme-reelo"}
+
+APP_PAGES = {
+    "chronolyze": {
+        "h1": "Is your watch keeping time?",
+        "features": [
+            "Live measurement",
+            "Classic trace",
+            "Accuracy tracking",
+            "Positional test",
+            "Magnetization check",
+            "Watch collection",
+            "104 movements built in",
+            "Plain-language verdicts",
+        ],
+    },
+}
 
 
 class EveryPageTest(unittest.TestCase):
@@ -76,6 +93,21 @@ class EveryPageTest(unittest.TestCase):
                     with self.subTest(page=page.name, href=anchor.get("href")):
                         self.assertIn("noopener", anchor.get("rel", ""))
 
+    def test_store_ids_match_app_section(self):
+        # A page under site/<app>/ may only point at that app's App Store listing.
+        for page in self.pages:
+            app = page.name.split("/")[0]
+            if app not in APPS:
+                continue
+            app_id = APPS[app]["id"]
+            with self.subTest(page=page.name):
+                for href in page.hrefs():
+                    if "apps.apple.com" in href:
+                        self.assertEqual(href, f"https://apps.apple.com/app/id{app_id}")
+                banner = page.metas.get("apple-itunes-app")
+                if banner is not None:
+                    self.assertEqual(banner, f"app-id={app_id}")
+
     def test_images_have_alt_and_dimensions(self):
         for page in self.pages:
             for img in page.images:
@@ -98,6 +130,43 @@ class HomePageTest(unittest.TestCase):
     def test_uses_home_theme_and_intro(self):
         self.assertIn("theme-home", self.page.body_classes)
         self.assertEqual(self.page.headings[0], "Hi, I’m Hakan.")
+
+
+class AppPageMixin:
+    app = ""
+
+    def setUp(self):
+        self.page = load_page(SITE / self.app / "index.html")
+        self.info = APPS[self.app]
+        self.expected = APP_PAGES[self.app]
+
+    def test_smart_app_banner(self):
+        self.assertEqual(self.page.metas.get("apple-itunes-app"), f"app-id={self.info['id']}")
+
+    def test_links_to_store_listing_more_than_once(self):
+        store = [h for h in self.page.hrefs() if "apps.apple.com" in h]
+        self.assertGreaterEqual(len(store), 2)
+        self.assertEqual(set(store), {f"https://apps.apple.com/app/id{self.info['id']}"})
+
+    def test_headline_and_features(self):
+        self.assertEqual(self.page.headings[0], self.expected["h1"])
+        for feature in self.expected["features"]:
+            self.assertIn(feature, self.page.headings)
+
+    def test_shows_every_screenshot_in_order(self):
+        shots = [img["src"] for img in self.page.images if "/img/shot-" in img["src"]]
+        self.assertEqual(shots, [f"/{self.app}/img/shot-{n}.webp" for n in range(1, self.info["shots"] + 1)])
+
+    def test_links_to_privacy_and_support(self):
+        self.assertIn(f"/{self.app}/privacy/", self.page.hrefs())
+        self.assertIn(f"/{self.app}/support/", self.page.hrefs())
+
+    def test_uses_app_theme(self):
+        self.assertIn(f"theme-{self.app}", self.page.body_classes)
+
+
+class ChronolyzePageTest(AppPageMixin, unittest.TestCase):
+    app = "chronolyze"
 
 
 class NotFoundPageTest(unittest.TestCase):
