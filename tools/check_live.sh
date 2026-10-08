@@ -26,11 +26,15 @@ expect "https://hkutluay.com/chronolyze/no-such-page/" 404
 expect "http://hkutluay.com/" 301 "https://hkutluay.com/"
 expect "https://www.hkutluay.com/" 301 "hkutluay.com/"
 
-# URLs the App Store listings point at today.
+# URLs the App Store listings point at today. The site lives in the project repo hakankutluay/hkutluay,
+# so these stay on hakankutluay.github.io (they are not moved under hkutluay.com).
 for old in chronolyze-site/privacy.html chronolyze-site/support.html reelo-site/privacy.html reelo-site/support.html; do
-  expect "https://hakankutluay.github.io/$old" 301 "hkutluay.com/$old"
-  expect "https://hkutluay.com/$old" 200
+  expect "https://hakankutluay.github.io/$old" 200
 done
+
+# The repo itself (README, docs, tests) must not be published — only site/.
+expect "https://hkutluay.com/README.md" 404
+expect "https://hkutluay.com/site/" 404
 
 mx=$(dig +short MX hkutluay.com)
 if grep -q "zoho.eu" <<<"$mx"; then
