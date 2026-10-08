@@ -314,7 +314,8 @@ h3 {
   height: 88px;
   margin-bottom: 28px;
   border-radius: 22.5%;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  /* faint ring keeps a dark icon visible on a dark hero */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 10px 28px rgba(0, 0, 0, 0.28);
 }
 
 .eyebrow {
