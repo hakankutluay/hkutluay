@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chronolyze — Privacy Policy</title>
+<style>
+  :root {
+    --bg1: #0b1220; --bg2: #060a14; --panel: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.10); --text: #e5e9f0; --muted: #9aa4b8;
+    --accent: #22d3ee;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--text);
+    background: linear-gradient(180deg, var(--bg1), var(--bg2)) fixed;
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 96px; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 22px; margin-bottom: 30px; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 5px 12px;
+    background: rgba(34,211,238,0.10); margin-bottom: 16px;
+  }
+  h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 20px; margin: 38px 0 10px; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; margin: 22px 0 6px; color: var(--text); }
+  p, li { color: var(--text); }
+  .muted { color: var(--muted); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { padding-left: 20px; }
+  li { margin: 6px 0; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 16px; padding: 18px 20px; margin: 18px 0;
+  }
+  .tldr { color: var(--muted); font-size: 15px; }
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  nav a { margin-right: 18px; font-size: 14px; }
+  code { background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 6px; font-size: 90%; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="badge">Chronolyze</span>
+    <h1>Privacy Policy</h1>
+    <p class="muted">Last updated: July 14, 2026</p>
+  </header>
+
+  <div class="card">
+    <p class="tldr"><strong>In short:</strong> Chronolyze analyzes your watch's
+    ticking entirely on your device. Audio is never recorded, stored, or sent
+    anywhere. Your saved watches and measurements stay on your device. We use
+    Google Analytics for Firebase to understand which features are used, in
+    aggregate — no name, email, audio, or advertising identifier is collected,
+    and the app does not track you across other apps or websites.</p>
+  </div>
+
+  <h2>Who we are</h2>
+  <p>Chronolyze ("the app") is a mechanical-watch timegrapher for iPhone,
+  developed by Kamil Hakan Kutluay ("we", "us"). This policy explains what data
+  the app handles and why. Questions? Email
+  <a href="mailto:hkutluay@hotmail.com">hkutluay@hotmail.com</a>.</p>
+
+  <h2>Information the app handles</h2>
+
+  <h3>Microphone audio (processed on-device only)</h3>
+  <p>To measure a watch, the app listens to the movement through your iPhone's
+  microphone. This audio is analyzed <strong>in real time on your device</strong>
+  to detect ticks and compute rate, beat error, and amplitude. The audio is
+  <strong>never recorded, saved, or transmitted</strong> off the device. The
+  microphone is only accessed while a measurement is running.</p>
+
+  <h3>Motion &amp; magnetometer (processed on-device only)</h3>
+  <p>The optional Magnetization Check reads the device magnetometer to detect a
+  magnetized movement. These readings are used live on-device and are not stored
+  or transmitted.</p>
+
+  <h3>Data you create (stored on your device)</h3>
+  <p>Watches, measurement sessions, positional-test runs, and settings you save
+  are stored locally on your device (via Apple's on-device SwiftData store). We
+  do not have accounts, and this content is not uploaded to us. If you use
+  iCloud device backups, Apple may include app data in your own encrypted
+  backup under Apple's terms.</p>
+
+  <h3>Usage analytics (Google Analytics for Firebase)</h3>
+  <p>The app uses Google Analytics for Firebase to understand, in aggregate, how
+  the app is used so we can improve it. This collects:</p>
+  <ul>
+    <li>Anonymous product events — e.g. that a measurement started, a diagnostic
+      completed, or which screen was viewed — with non-identifying parameters
+      (such as a beat rate or a result category).</li>
+    <li>Basic device and app information — device model, operating-system
+      version, app version, language/region, and a coarse location derived from
+      IP address.</li>
+    <li>A Firebase-generated app-instance identifier used to count distinct
+      installs and sessions.</li>
+  </ul>
+  <p>We do <strong>not</strong> collect your name, email, contacts, precise
+  location, or any audio. The app does <strong>not</strong> use the advertising
+  identifier (IDFA), shows no ads, and does <strong>not</strong> track you across
+  other companies' apps or websites (so no App Tracking Transparency prompt is
+  shown).</p>
+
+  <h2>How we use this information</h2>
+  <ul>
+    <li>To make the app work — real-time audio and sensor analysis on your device.</li>
+    <li>To store your watches and measurement history for you, on your device.</li>
+    <li>To understand aggregate feature usage and reliability so we can prioritize
+      improvements.</li>
+  </ul>
+
+  <h2>Sharing</h2>
+  <p>We do not sell your data and do not share it with third parties for their
+  own purposes. Aggregate analytics data is processed by Google as our service
+  provider through Firebase; see
+  <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy &amp; Security</a>
+  and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.
+  We may disclose information if required by law.</p>
+
+  <h2>Data retention</h2>
+  <p>Data you create lives on your device until you delete it (delete a watch,
+  session, or the app). Analytics data is retained by Google/Firebase according
+  to our project's retention settings and Google's policies.</p>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>You control microphone access in <code>iOS Settings › Privacy &amp;
+      Security › Microphone › Chronolyze</code>. Denying it disables live
+      measurement but the rest of the app still works.</li>
+    <li>Deleting the app removes all locally stored data and stops all analytics
+      collection from your device.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>Chronolyze is a hobbyist tool not directed to children under 13, and we do
+  not knowingly collect personal information from children.</p>
+
+  <h2>Security</h2>
+  <p>Because measurement audio and your saved data stay on your device, they are
+  protected by iOS's app sandbox and device encryption. Analytics is transmitted
+  to Google over encrypted connections.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy as the app evolves. Material changes will be
+  reflected here with a new "last updated" date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or requests about your privacy: <a href="mailto:hkutluay@hotmail.com">hkutluay@hotmail.com</a>.</p>
+
+  <footer>
+    <nav><a href="privacy.html">Privacy Policy</a><a href="support.html">Support</a></nav>
+    <p>© 2026 Kamil Hakan Kutluay</p>
+  </footer>
+</div>
+</body>
+</html>
