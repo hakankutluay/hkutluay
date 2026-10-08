@@ -11,9 +11,9 @@ expect() {
   code=${out%% *}
   location=${out#* }
   if [[ $code == "$want" && ( -z $target || $location == *"$target"* ) ]]; then
-    echo "ok   $code $url${location:+ → $location}"
+    echo "ok   $code $url${location:+ → ${location}}"
   else
-    echo "FAIL $code $url${location:+ → $location} (wanted $want${target:+ → …$target…})"
+    echo "FAIL $code $url${location:+ → ${location}} (wanted $want${target:+ → …${target}…})"
     fail=1
   fi
 }
